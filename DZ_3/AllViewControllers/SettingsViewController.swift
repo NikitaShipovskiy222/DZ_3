@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     
     //MARK: - Delegate
     weak var delegate: MainViewControllerDelegate?
-    weak var delegateAbout: ProfileViewControllerDelegate?
+
     
     //MARK: - Make Label
     private lazy var nameLabel: UILabel = {
@@ -35,7 +35,13 @@ class SettingsViewController: UIViewController {
     //MARK: - Make TextFiled
     private lazy var nameTextFiled = makeTextFiled(originaY: 121, height: 51)
     private lazy var surnameTextFiled = makeTextFiled(originaY: 218, height: 51)
-    private lazy var descriptionTextFiled = makeTextFiled(originaY: 315, height: 144)
+    
+    
+    private lazy var descriptionTextView: UITextView = {
+        $0.backgroundColor = UIColor(named: "ViewColor")
+        $0.layer.cornerRadius = 10
+        return $0
+    }(UITextView(frame: CGRect(x: 30, y: 314, width: view.frame.width - 60, height: 144)))
     
     
     private lazy var saveButton: UIButton = {
@@ -47,10 +53,7 @@ class SettingsViewController: UIViewController {
     
     
     lazy var saveAction = UIAction { [weak self] _ in
-        self?.delegate?.setName(name: self?.nameTextFiled.text ?? "")
-        self?.delegate?.setSurname(surname: self?.surnameTextFiled.text ?? "")
-        
-        self?.delegateAbout?.setAboutMe(aboutMe: self?.descriptionTextFiled.text ?? "")
+        self?.delegate?.addPersoneData(name: self?.nameTextFiled.text ?? "", surname: self?.surnameTextFiled.text ?? "", description: self?.descriptionTextView.text ?? "")
         
     }
     
@@ -62,7 +65,7 @@ class SettingsViewController: UIViewController {
         
         view.addSubview(nameTextFiled)
         view.addSubview(surnameTextFiled)
-        view.addSubview(descriptionTextFiled)
+        view.addSubview(descriptionTextView)
         
         
         view.addSubview(nameLabel)

@@ -7,15 +7,13 @@
 
 import UIKit
 
-protocol ProfileViewControllerDelegate: AnyObject{
-    func setAboutMe(aboutMe: String)
-}
+
 
 class ProfileViewController: UIViewController {
 
     
 
-    private lazy var imageCenter: UIImageView = {
+   private lazy var imageCenter: UIImageView = {
         $0.image = .img1
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
@@ -23,17 +21,17 @@ class ProfileViewController: UIViewController {
         return $0
     }(UIImageView(frame: CGRect(x: 165, y: 95, width: view.frame.width - 330, height: 75)))
     
-    private lazy var yourName: UILabel = {
+     lazy var yourName: UILabel = {
         $0.text = "Name"
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return $0
     }(UILabel(frame: CGRect(x: 140, y: 193, width: view.frame.width - 319, height: 19)))
     
-    private lazy var yourSurname: UILabel = {
+     lazy var yourSurname: UILabel = {
         $0.text = "Surname"
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return $0
-    }(UILabel(frame: CGRect(x: 190, y: 193, width: view.frame.width - 319, height: 19)))
+    }(UILabel(frame: CGRect(x: 190, y: 193, width: view.frame.width - 300, height: 19)))
     
     private lazy var aboutMeLabel: UILabel = {
         $0.text = "About Me"
@@ -42,14 +40,12 @@ class ProfileViewController: UIViewController {
     }(UILabel(frame: CGRect(x: 42, y: 245, width: view.frame.width - 300, height: 19)))
 
     
-    private lazy var aboutMeText: UILabel = {
+     lazy var aboutMeText: UITextView = {
         $0.backgroundColor = UIColor(named: "ViewColor")
-        $0.numberOfLines = 0
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
-        $0.textAlignment = .center
         return $0
-    }((UILabel(frame: CGRect(x: 30, y: 273, width: view.frame.width - 60, height: 158))))
+    }(UITextView(frame: CGRect(x: 30, y: 273, width: view.frame.width - 60, height: 158)))
     
     
     override func viewDidLoad() {
@@ -68,16 +64,6 @@ class ProfileViewController: UIViewController {
 
 }
 
-extension ProfileViewController: ProfileViewControllerDelegate{
-    func setAboutMe(aboutMe: String) {
-        self.aboutMeText.text = aboutMe
-    }
-    
-    
-
-    
-    
-}
 
 #Preview() {
     ProfileViewController()
