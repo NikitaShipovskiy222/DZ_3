@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 15
         return $0
-    }(UIImageView(frame: CGRect(x: 165, y: 95, width: view.frame.width - 330, height: 75)))
+    }(UIImageView(frame: CGRect(x: 165, y: 95, width: 75, height: 75)))
     
      lazy var yourName: UILabel = {
         $0.text = "Name"

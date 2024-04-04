@@ -40,6 +40,8 @@ class SettingsViewController: UIViewController {
     private lazy var descriptionTextView: UITextView = {
         $0.backgroundColor = UIColor(named: "ViewColor")
         $0.layer.cornerRadius = 10
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        $0.textContainerInset = .init(top: 10, left: 10, bottom: 10, right: 10)
         return $0
     }(UITextView(frame: CGRect(x: 30, y: 314, width: view.frame.width - 60, height: 144)))
     
@@ -100,7 +102,3 @@ class SettingsViewController: UIViewController {
 
 }
 
-
-#Preview() {
-    SettingsViewController()
-}

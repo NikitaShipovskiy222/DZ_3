@@ -73,6 +73,9 @@ class MainViewController: UIViewController {
         abouMeSreen.yourSurname.text = self?.loginSurnameLabel.text
         abouMeSreen.aboutMeText.text = self?.userAbout
         
+        abouMeSreen.title = self?.loginNameLabel.text ?? ""
+        
+        
         self?.navigationController?.pushViewController(abouMeSreen, animated: true)
     }
     
